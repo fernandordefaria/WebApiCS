@@ -34,4 +34,15 @@ public class EmployeeController : ControllerBase
         _employeeRepository.Add(employee);
         return Ok();
     }
+
+    [HttpPost]
+    [Route("{id}/download")]
+    public IActionResult DownloadPhoto(int id)
+    {
+        var employee = _employeeRepository.Get(id);
+
+        var dataBytes = System.IO.File.ReadAllBytes(employee.photo);
+
+        return File(dataBytes, "image/png");
+    }
 }
