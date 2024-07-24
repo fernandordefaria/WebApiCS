@@ -1,8 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApiCS.Model;
 using WebApiCS.ViewModel;
 
-namespace server.Controllers;
+namespace WebApiCS.Controllers;
 
 [ApiController]
 [Route("api/v1/employee")]
@@ -15,6 +16,7 @@ public class EmployeeController : ControllerBase
         _employeeRepository = employeeRepository ?? throw new ArgumentException();
     }
 
+    [Authorize]
     [HttpGet]
     public IActionResult Get()
     {
@@ -22,6 +24,7 @@ public class EmployeeController : ControllerBase
         return Ok(employees);
     }
     
+    [Authorize]
     [HttpPost]
     public IActionResult Add([FromForm] EmployeeViewModel employeeView)
     {
@@ -35,6 +38,7 @@ public class EmployeeController : ControllerBase
         return Ok();
     }
 
+    [Authorize]
     [HttpPost]
     [Route("{id}/download")]
     public IActionResult DownloadPhoto(int id)
