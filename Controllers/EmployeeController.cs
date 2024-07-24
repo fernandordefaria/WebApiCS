@@ -10,21 +10,28 @@ namespace WebApiCS.Controllers;
 public class EmployeeController : ControllerBase
 {
     private readonly IEmployeeRepository _employeeRepository;
-
-    public EmployeeController(IEmployeeRepository employeeRepository)
+    private readonly ILogger<EmployeeController> _logger;
+    public EmployeeController(IEmployeeRepository employeeRepository, ILogger<EmployeeController> logger)
     {
-        _employeeRepository = employeeRepository ?? throw new ArgumentException();
+        _employeeRepository = employeeRepository ?? throw new ArgumentException(nameof(employeeRepository));
+        _logger = logger ?? throw new ArgumentException(nameof(logger));
     }
 
-    [Authorize]
+    // [Authorize]
     [HttpGet]
     public IActionResult Get()
     {
+        _logger.Log(LogLevel.Error, "Error: ");
+
+        // throw new Exception("Erro teste");
+        
         var employees = _employeeRepository.Get();
+        _logger.LogInformation("Teste de Log");
+        
         return Ok(employees);
     }
     
-    [Authorize]
+    // [Authorize]
     [HttpPost]
     public IActionResult Add([FromForm] EmployeeViewModel employeeView)
     {
@@ -38,7 +45,7 @@ public class EmployeeController : ControllerBase
         return Ok();
     }
 
-    [Authorize]
+    // [Authorize]
     [HttpPost]
     [Route("{id}/download")]
     public IActionResult DownloadPhoto(int id)
