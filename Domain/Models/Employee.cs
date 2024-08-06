@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
-
-namespace WebApiCS.Model;
 using System.ComponentModel.DataAnnotations;
+
+namespace WebApiCS.Domain.Models;
 
 [Table("employee")]
 public class Employee

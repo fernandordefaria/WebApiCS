@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using WebApiCS.Model;
+using WebApiCS.Domain.Models;
 
 namespace WebApiCS.Infra;
 

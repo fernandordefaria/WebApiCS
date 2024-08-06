@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebApiCS.Model;
-using WebApiCS.ViewModel;
+using WebApiCS.Domain.Models;
+using WebApiCS.Application.ViewModels;
 
 namespace WebApiCS.Controllers;
 

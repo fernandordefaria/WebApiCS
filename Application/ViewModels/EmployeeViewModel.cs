@@ -1,6 +1,4 @@
-using Microsoft.AspNetCore.Http;
-
-namespace WebApiCS.ViewModel;
+namespace WebApiCS.Application.ViewModels;
 
 public class EmployeeViewModel
 {

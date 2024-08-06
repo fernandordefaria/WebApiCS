@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using WebApiCS.Services;
-using WebApiCS.Model;
+using WebApiCS.Application.Services;
+using WebApiCS.Domain.Models;
 
 namespace WebApiCS.Controllers;
 

@@ -1,6 +1,7 @@
-using WebApiCS.Model;
+using WebApiCS.Domain.Models;
+using WebApiCS.Domain.DTOs;
 
-namespace WebApiCS.Infra;
+namespace WebApiCS.Infra.Repositories;
 
 public class EmployeeRepository : IEmployeeRepository
 {
@@ -12,9 +13,9 @@ public class EmployeeRepository : IEmployeeRepository
         _context.SaveChanges();
     }
 
-    public List<Employee> Get()
+    public List<EmployeeDTO> Get()
     {
-        return _context.Employees.ToList();
+        return _context.Employees.Select(b=>new EmployeeDTO(){Id = b.id, NameEmployee = b.name, Photo = b.photo}).ToList();
     }
 
     public Employee Get(int id)

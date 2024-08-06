@@ -1,8 +1,10 @@
-namespace WebApiCS.Model;
+using WebApiCS.Domain.DTOs;
+
+namespace WebApiCS.Domain.Models;
 
 public interface IEmployeeRepository
 {
     void Add(Employee employee);
-    List<Employee> Get();
+    List<EmployeeDTO> Get();
     Employee? Get(int id);
 }
